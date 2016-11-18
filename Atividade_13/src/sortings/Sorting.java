@@ -1,6 +1,6 @@
 package sortings;
 
-public interface Sorting<T>{
+public interface Sorting{
 	
-	public void sort(T[] elements);
+	public void sort(int[] elements);
 }

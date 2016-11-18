@@ -1,14 +1,14 @@
 package sortings;
 
 
-public class MergeSort<T extends Comparable<T>> implements Sorting<T> {
+public class MergeSort implements Sorting {
 
 	@Override
-	public void sort(T[] elements) {
+	public void sort(int[] elements) {
 		ordenacao(elements, 0, elements.length-1);
 	}
 
-	public void ordenacao(T[] V, int ini, int fim) {
+	public void ordenacao(int[] V, int ini, int fim) {
 		if (ini < fim) {
 			int med = (ini + fim) / 2;
 			ordenacao(V, ini, med);
@@ -17,9 +17,9 @@ public class MergeSort<T extends Comparable<T>> implements Sorting<T> {
 		}
 	}
 
-	public void merge(T[] elements, int ini, int med, int fim) {
+	public void merge(int[] elements, int ini, int med, int fim) {
 		@SuppressWarnings("unchecked")
-		T[] auxilio = (T[]) new Comparable[elements.length];
+		int[] auxilio =new int[elements.length];
 		for (int i = 0; i < auxilio.length; i++) {
 			auxilio[i] = elements[i];
 		}
@@ -27,7 +27,7 @@ public class MergeSort<T extends Comparable<T>> implements Sorting<T> {
 		int y = med + 1;
 		int z = ini;
 		while (x <= med && y <= fim) {
-			if (auxilio[x].compareTo(auxilio[y]) < 0) {
+			if (auxilio[x]< auxilio[y]) {
 				elements[z++] = auxilio[x++];
 			} else {
 				elements[z++] = auxilio[y++];

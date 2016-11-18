@@ -1,43 +1,47 @@
 package sortings;
 
 
-public class QuickSort<T extends Comparable<T>> implements Sorting<T> {
+public class QuickSort implements Sorting {
 
-	@Override
-	public void sort(T[] elements) {
+	public void sort(int[] elements) {
 		ordenacao(elements, 0, elements.length-1);
 
 	}
 
-	public void ordenacao(T[] v, int ini, int fim) {
-		
+	public void ordenacao(int[] v, int ini, int fim) {
+		int k =  particiona(v, ini, fim);
 		if(ini < fim){
-			int k =  particiona(v, ini, fim);
 			ordenacao(v, ini, k-1);
 			ordenacao(v, k+1, fim);
 		}
 	}
 
-	private int particiona(T[] v, int ini, int fim) {
-		T pivot = v[ini];
+	private int particiona(int[] v, int ini, int fim) {
+		int pivot = v[ini];
 		int i = ini;
-		int j = i + 1;
+		/*int j = ini + 1;
 		while (j <= fim) {
-			if (v[j].compareTo(pivot) < 0) {
+			if (v[j] < pivot) {
 				i++;
-				swap(v, j, i);
+				swap(v, i, j);
 			}
 			j++;
+		}*/
+		for (int j = ini + 1; j <= fim; j++) {
+			if(v[j] < pivot){
+				i+=1;
+				swap(v,i,j);
+			}
 		}
 		swap(v, ini, i);
 		return i;
 
 	}
 
-	private void swap(T[] v, int j, int i) {
-		T aux = v[j];
-		v[j] = v[i];
-		v[i] = aux;
+	private void swap(int[] v, int i, int j) {
+		int aux = v[i];
+		v[i] = v[j];
+		v[j] = aux;
 		
 	}
 
