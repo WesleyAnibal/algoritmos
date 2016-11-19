@@ -3,6 +3,11 @@ package sortings;
 
 public class MergeSort implements Sorting {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void sort(int[] elements) {
 		ordenacao(elements, 0, elements.length-1);
@@ -18,8 +23,7 @@ public class MergeSort implements Sorting {
 	}
 
 	public void merge(int[] elements, int ini, int med, int fim) {
-		@SuppressWarnings("unchecked")
-		int[] auxilio =new int[elements.length];
+		int[] auxilio = new int[elements.length];
 		for (int i = 0; i < auxilio.length; i++) {
 			auxilio[i] = elements[i];
 		}

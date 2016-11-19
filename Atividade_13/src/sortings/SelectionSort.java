@@ -2,6 +2,11 @@ package sortings;
 
 public class SelectionSort implements Sorting {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void sort(int[] elements) {
 		for (int j = 0; j < elements.length; j++) {
