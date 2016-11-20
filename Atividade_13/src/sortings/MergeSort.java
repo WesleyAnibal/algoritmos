@@ -3,10 +3,6 @@ package sortings;
 
 public class MergeSort implements Sorting {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void sort(int[] elements) {
@@ -22,28 +18,49 @@ public class MergeSort implements Sorting {
 		}
 	}
 
-	public void merge(int[] elements, int ini, int med, int fim) {
-		int[] auxilio = new int[elements.length];
-		for (int i = 0; i < auxilio.length; i++) {
-			auxilio[i] = elements[i];
-		}
-		int x = ini;
-		int y = med + 1;
-		int z = ini;
-		while (x <= med && y <= fim) {
-			if (auxilio[x]< auxilio[y]) {
-				elements[z++] = auxilio[x++];
-			} else {
-				elements[z++] = auxilio[y++];
-			}
-		}
-		while (x <= med) {
-			elements[z++] = auxilio[x++];
-		}
-		while (y <= fim) {
-			elements[z++] = auxilio[y++];
-		}
+	public void merge(int[] v, int ini, int med, int fim) {
+		int[] helper = new int[v.length];
 
+        for (int i = 0; i < v.length; i++) {
+            helper[i] = v[i];
+        }
+
+        int i = ini;
+        int j = med + 1;
+        int k = ini;
+    
+        while (i <= med && j <= fim) {
+            if (helper[i] < helper[j]) {
+                v[k] = helper[i];
+                i++;
+            } else {
+                v[k] = helper[j];
+                j++;
+            }
+
+            k++;
+        
+        }
+        
+        // primeira metade não foi toda consumida: fazer append de todos
+        // os elementos da primeira metade
+        while (i <= med) {
+            v[k] = helper[i];
+            k+=1;
+            i+=1;
+        }
+
+        // segunda metade não foi toda consumida: fazer append de todos
+        // os elementos da segunda metade
+        while (j <= fim) {
+            v[k] = helper[j];
+            k+=1;
+            j+=1;
+        }
+
+
+	}public String toString(){
+		return "merge";
 	}
 	
 
