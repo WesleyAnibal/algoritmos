@@ -1,5 +1,3 @@
-package sortings;
-
 import java.util.Arrays;
 
 public class SelectionSortSimultaneo {
@@ -7,23 +5,20 @@ public class SelectionSortSimultaneo {
 		if (ini < fina) {
 			int maior = ini;
 			int menor = ini;
-			for (int i = ini; i <= fina; i++) {
-				if (v[i] < v[menor]) {
-					menor = i;
-				}
+			for (int i = maior + 1; i <= fina; i++) {
 				if (v[i] > v[maior]) {
 					maior = i;
 				}
 			}
-			if ((ini + fina) == v.length - 1) {
-				swap(v, fina, maior);
-			} else {
-				swap(v, fina, maior);
-				swap(v, ini, menor);
+			swap(v, maior, fina);
+			fina--;
+			for (int i = fina; i > ini; i--) {
+				if (v[i] < v[menor]) {
+					menor = i;
+				}
 			}
-
-			++ini;
-			--fina;
+			swap(v, ini, menor);
+			ini++;
 			SelectionSort(v, ini, fina);
 		}
 	}
@@ -35,9 +30,10 @@ public class SelectionSortSimultaneo {
 	}
 
 	public static void main(String[] args) {
-		int[] x = { 10, 9, 8, 7, 6, 5, 4, 3 };
+		int[] x = { 0,0,0,0,0};
 		new SelectionSortSimultaneo().SelectionSort(x, 0, x.length - 1);
 		System.out.println(Arrays.toString(x));
 	}
 
 }
+			
